@@ -30,6 +30,12 @@ namespace OctopusApiKeyAuthenticationProvider.Configuration
                 if (isEnabled && _webPortalConfigurationStore.GetForceSSL() == false && _webPortalConfigurationStore.GetListenPrefixes().ToLower().Contains("http://"))
                     _log.Warn($"API Key user authentication extension was enabled on an instance including listening prefixes that are not using https.");
             });
+            yield return new ConfigureCommandOption("apiKeyAuthRequireUserIdInRequest=", "If the user id (user name for forms) is required to successfully authenticate.", v =>
+            {
+                var requireUserIdInRequest = bool.Parse(v);
+                _configurationStore.Value.SetRequireUserIdInRequest(requireUserIdInRequest);
+                _log.Info($"{ApiKeyAuthExtension.Id} RequireUserIdInRequest set to: {requireUserIdInRequest}");
+            });
             yield return new ConfigureCommandOption("apiKeyAuthAllowServiceAccountLogin=", "If service accounts can authenticate using the API Key Auth extension.", v =>
             {
                 var allowServiceAccountLogin = bool.Parse(v);

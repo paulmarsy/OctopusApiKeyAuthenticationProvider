@@ -27,6 +27,15 @@ namespace OctopusApiKeyAuthenticationProvider.Configuration
             _configurationStore.Update(doc);
         }
 
+        public bool GetRequireUserIdInRequest() => _configurationStore.Get<ApiKeyAuthConfiguration>(SingletonId)?.RequireUserIdInRequest ?? false;
+
+        public void SetRequireUserIdInRequest(bool requireUserIdInRequest)
+        {
+            var doc = _configurationStore.Get<ApiKeyAuthConfiguration>(SingletonId) ?? MoveSettingsToDatabase();
+            doc.RequireUserIdInRequest = requireUserIdInRequest;
+            _configurationStore.Update(doc);
+        }
+
         public bool GetAllowServiceAccountLogin() => _configurationStore.Get<ApiKeyAuthConfiguration>(SingletonId)?.AllowServiceAccountLogin ?? false;
 
         public void SetAllowServiceAccountLogin(bool allowServiceAccountLogin)

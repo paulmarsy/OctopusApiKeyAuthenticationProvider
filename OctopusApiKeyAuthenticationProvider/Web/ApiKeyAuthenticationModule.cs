@@ -43,13 +43,13 @@ namespace OctopusApiKeyAuthenticationProvider
             if (!_configurationStore.GetIsEnabled())
                 return;
 
-            Get[ApiKeyAuthExtension.AuthenticateUri] = parameters =>
+            Get[ApiKeyAuthExtension.AuthenticateUri + (_configurationStore.GetRequireUserIdInRequest() ? ApiKeyAuthExtension.UserIdQueryString : null)] = parameters =>
             {
                 string id = parameters.id;
                 string apiKey = parameters.apikey;
-                if (string.IsNullOrWhiteSpace(id) || string.IsNullOrWhiteSpace(apiKey))
+                if ((string.IsNullOrWhiteSpace(id) && _configurationStore.GetRequireUserIdInRequest()) || string.IsNullOrWhiteSpace(apiKey))
                     return new NotFoundResponse();
-
+                _userStore.
                 var user = _userStore.GetById(id);
                 if (user == null)
                     return new NotFoundResponse();

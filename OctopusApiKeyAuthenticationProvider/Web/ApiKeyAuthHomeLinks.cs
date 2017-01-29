@@ -18,7 +18,10 @@ namespace OctopusApiKeyAuthenticationProvider.Web
             var linksToContribute = new Dictionary<string, string>();
 
             if (_configurationStore.GetIsEnabled())
-                linksToContribute.Add(ApiKeyAuthExtension.Id, ApiKeyAuthExtension.AuthenticateUri);
+                if (_configurationStore.GetRequireUserIdInRequest())
+                    linksToContribute.Add(ApiKeyAuthExtension.Id, ApiKeyAuthExtension.AuthenticateUri + ApiKeyAuthExtension.UserIdQueryString);
+                else
+                    linksToContribute.Add(ApiKeyAuthExtension.Id, ApiKeyAuthExtension.AuthenticateUri);
 
             return linksToContribute;
         }

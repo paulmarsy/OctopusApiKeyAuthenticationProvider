@@ -14,6 +14,7 @@ namespace OctopusApiKeyAuthenticationProvider.Configuration
         }
 
         public bool IsEnabled { get; set; }
+        public bool RequireUserIdInRequest { get; set; }
         public bool AllowServiceAccountLogin { get; set; }
         public bool AllowFormsAuthentication { get; set; }
     }

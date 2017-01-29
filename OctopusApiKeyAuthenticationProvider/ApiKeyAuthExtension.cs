@@ -15,7 +15,8 @@ namespace OctopusApiKeyAuthenticationProvider
     {
         public const string Title = "API Key Authentication";
         public const string Id = "ApiKeyAuth";
-        public static readonly string AuthenticateUri = "/api/users/{id}/authenticate/apikey/{apikey}";
+        public static readonly string AuthenticateUri = "/api/users/authenticate/apikey/{apikey}";
+        public const string UserIdQueryString = "?{id}";
 
         public void Load(ContainerBuilder builder)
         {
