@@ -2,7 +2,7 @@
 
 namespace OctopusApiKeyAuthenticationProvider.Configuration
 {
-    public  class ApiKeyAuthConfiguration : ExtensionConfigurationDocument
+    public class ApiKeyAuthConfiguration : ExtensionConfigurationDocument
     {
         protected ApiKeyAuthConfiguration()
         {
@@ -10,9 +10,11 @@ namespace OctopusApiKeyAuthenticationProvider.Configuration
 
         public ApiKeyAuthConfiguration(string name, string extensionAuthor) : base(name, extensionAuthor)
         {
-            Id = ApiKeyAuthConstants.SingletonId;
+            Id = ApiKeyAuthConfigurationStore.SingletonId;
         }
+
         public bool IsEnabled { get; set; }
-        public bool IsServiceLoginEnabled { get; set; }
+        public bool AllowServiceAccountLogin { get; set; }
+        public bool AllowFormsAuthentication { get; set; }
     }
 }

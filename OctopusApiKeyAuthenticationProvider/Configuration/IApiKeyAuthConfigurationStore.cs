@@ -4,8 +4,12 @@ namespace OctopusApiKeyAuthenticationProvider.Configuration
 {
     public interface IApiKeyAuthConfigurationStore : IExtensionConfigurationStore
     {
-        bool GetIsServiceLoginEnabled();
+        bool GetAllowServiceAccountLogin();
 
-        void SetIsServiceLoginEnabled(bool isServiceLoginEnabled);
+        void SetAllowServiceAccountLogin(bool allowServiceAccountLogin);
+
+        bool GetAllowFormsAuthentication();
+
+        void SetAllowFormsAuthentication(bool allowFormsAuthentication);
     }
 }
