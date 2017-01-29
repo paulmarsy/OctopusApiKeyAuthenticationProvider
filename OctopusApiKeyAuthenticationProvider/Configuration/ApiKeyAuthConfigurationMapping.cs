@@ -1,5 +1,5 @@
-﻿using Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration;
-using System;
+﻿using System;
+using Octopus.Server.Extensibility.Extensions.Infrastructure.Configuration;
 
 namespace OctopusApiKeyAuthenticationProvider.Configuration
 {
